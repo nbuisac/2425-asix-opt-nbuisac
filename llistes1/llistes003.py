@@ -12,4 +12,11 @@ for i in range(quantes):
 busca = input("Quina paraula vols canviar ? ")
 nova = input("Quina paraula vols posar-hi ? ")
 
+print(paraules)
+
+for i in range(len(paraules)):
+    if paraules[i] == busca:
+        paraules[i] = nova
+
+print(paraules)
 

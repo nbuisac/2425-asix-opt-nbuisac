@@ -12,7 +12,7 @@ fitxer_db = r"C:\Users\nbuisac\Downloads\empresa.db"
 opcions_MP = [
     "Llistar dades per pantalla",
     "Exportar dades en un fitxer",
-    "Exportar dades en un fitxer"
+    "Importar dades d'un fitxer"
 ]
 
 opcions_Taules = [
@@ -35,6 +35,9 @@ def menu(opcions):
 def connecta():
     return sqlite3.connect(fitxer_db)
 
+def carregaRegions():
+    
+
 def mostra_Taula(taula):
     print(f"Dades de la taula {taula}")
     conn= connecta()
@@ -53,5 +56,11 @@ while opcio != 0:
     elif opcio == 2:
         pass
     elif opcio == 3:
-        pass
+        opcio = menu(["Carrega regions", "Carrega paisos"])
+        while opcio != 0:
+            if opcio == 1:
+                carregaRegions()
+            elif opcio == 2:
+                pass
+            opcio = menu(["Carrega regions", "Carrega paisos"]) 
     opcio = menu(opcions_MP)

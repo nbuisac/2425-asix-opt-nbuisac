@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Pàgina de prova</title>
+        <meta charset="utf-8">
+        <style>
+            header {
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 0px;
+            }
+            footer {
+                background-color: black;
+                color: white;
+                font-size: -0.5em;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                bottom: 0px;
+                padding: 5px 0px;
+            }
+            body {
+                position: relative;
+                top: 100;
+                background-color: orange;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="/montilivi.png" alt="Montilivi" />
+        </header>
+        <section>
+            {{COS_DEL_CODI}}
+        </section>
+        <footer>
+            Institut Montilivi - Mòdul Optatiu
+        </footer>
+    <script>
+var livereload = function(epoch, requestId) {
+    var req, timeout;
+
+    var poll = function() {
+        req = new XMLHttpRequest();
+        req.onloadend = function() {
+            if (parseFloat(this.responseText) > epoch) {
+                location.reload();
+            } else {
+                timeout = setTimeout(poll, this.status === 200 ? 0 : 3000);
+            }
+        };
+        req.open("GET", "/livereload/" + epoch + "/" + requestId);
+        req.send();
+    }
+
+    var stop = function() {
+        if (req) {
+            req.abort();
+        }
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        req = timeout = undefined;
+    };
+
+    window.addEventListener("load", function() {
+        if (document.visibilityState === "visible") {
+            poll();
+        }
+    });
+    window.addEventListener("visibilitychange", function() {
+        if (document.visibilityState === "visible") {
+            poll();
+        } else {
+            stop();
+        }
+    });
+    window.addEventListener("beforeunload", stop);
+
+    console.log('Enabled live reload');
+}
+livereload(814671, 3645562);
+</script></body>
+</html>
